@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function DemoScreen() {
     /**
@@ -13,8 +13,8 @@ export default function DemoScreen() {
         };
     });
     return (
-        <View>
-            <Text>Demo</Text>
+        <View style={styles.container}>
+            <Text>Demo {Math.floor(Math.random() * Math.floor(10))}</Text>
         </View>
     );
 }
@@ -22,3 +22,11 @@ export default function DemoScreen() {
 DemoScreen.navigationOptions = {
     title: "Demo View"
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    }
+});

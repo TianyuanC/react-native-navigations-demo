@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { View, Button } from "react-native";
 import {
     NavigationEvents,
@@ -19,7 +18,7 @@ export default function SettingsScreen(props) {
         };
     });
 
-    const customActions = StackActions.reset({
+    const customStackHistory = StackActions.reset({
         index: 3,
         actions: [
             NavigationActions.navigate({ routeName: "Settings" }),
@@ -32,15 +31,15 @@ export default function SettingsScreen(props) {
     return (
         <View>
             <NavigationEvents
-                onWillFocus={payload => console.log("will focus")}
-                onDidFocus={payload => console.log("did focus")}
-                onWillBlur={payload => console.log("will blur", payload)}
-                onDidBlur={payload => console.log("did blur")}
+                onWillFocus={() => console.log("will enter")}
+                onDidFocus={() => console.log("did enter")}
+                onWillBlur={payload => console.log("will leave", payload)}
+                onDidBlur={() => console.log("did leave")}
             />
             <Button
-                title="View Demo"
+                title="View Demo Stack"
                 onPress={() => {
-                    props.navigation.dispatch(customActions);
+                    props.navigation.dispatch(customStackHistory);
                 }}
             />
             <Button
